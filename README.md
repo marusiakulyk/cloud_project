@@ -4,5 +4,5 @@
 4. Change request URL in get.js and post.js to ApiUrl from outputs
 4. Copy static files to host bucket (get.js, post.js, scriptImg.js, statistics.html, index.html)
 
-Demo page - http://d35pxlpvgkrgs1.cloudfront.net/
-Report - https://docs.google.com/document/d/12J3yfSEneSeZ1AuFr54Z2CKzuCqExdagdI-3xdSe3nw/edit
+<p>Demo page - http://d35pxlpvgkrgs1.cloudfront.net/</p>
+<p>Report - https://docs.google.com/document/d/12J3yfSEneSeZ1AuFr54Z2CKzuCqExdagdI-3xdSe3nw/edit</p>
