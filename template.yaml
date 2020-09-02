@@ -17,7 +17,7 @@ Globals:
 
 
 Resources:
-  DynamoCustomersTable:
+  DynamoImagesTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
       TableName: images
@@ -42,7 +42,7 @@ Resources:
             RestApiId: !Ref ApiGateway
 
   PostImgFunction:
-    Type: 'AWS::Serverless::Function'
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: PostImgFunction
       CodeUri: .
@@ -115,6 +115,7 @@ Resources:
 
 Outputs:
   GetApiUrl:
+    Description: "API URL"
     Value: !Sub https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/v1
   Domain:
     Description: 'Cloudfront Domain'

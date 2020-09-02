@@ -14,7 +14,7 @@ Globals:
       AllowHeaders: '''*'''
       AllowOrigin: '''*'''
 Resources:
-  DynamoCustomersTable:
+  DynamoImagesTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
       TableName: images
@@ -25,7 +25,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: GetImgFunction
-      CodeUri: s3://mariiakulyk-artefacts/b5571aa3d018c4232fb6ef59eb621bb0
+      CodeUri: s3://mariiakulyk-artefacts/d3a7fe281409a5badd19c4321443a52c
       Handler: index.getImg
       Policies: AmazonDynamoDBFullAccess
       Events:
@@ -40,7 +40,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: PostImgFunction
-      CodeUri: s3://mariiakulyk-artefacts/b5571aa3d018c4232fb6ef59eb621bb0
+      CodeUri: s3://mariiakulyk-artefacts/d3a7fe281409a5badd19c4321443a52c
       Handler: index.postImg
       Policies: AmazonDynamoDBFullAccess
       Events:
@@ -110,6 +110,7 @@ Resources:
                 ${CloudFrontOriginAccessIdentity}
 Outputs:
   GetApiUrl:
+    Description: API URL
     Value:
       Fn::Sub: https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/v1
   Domain:

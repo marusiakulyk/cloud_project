@@ -5,8 +5,7 @@ const db = new AWS.DynamoDB.DocumentClient({region: 'eu-central-1'});
 
 exports.getImg = function (event, context, callback) {
     let scanningParameters = {
-        TableName: 'images',
-        Limit: 100
+        TableName: 'images'
     };
 
     db.scan(scanningParameters, function (err, data) {
