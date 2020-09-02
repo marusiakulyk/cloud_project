@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body onload="loadImageFile();">
+    <form id="contact" name="contact">
+            <input placeholder="Your Email Address" id="email" type="email" tabindex="2" required>
+            <input placeholder="Width" type="text" id="width" tabindex="1" required autofocus>
+            <input placeholder="Height" type="text" id="height" tabindex="1" required autofocus>
+            <input placeholder="Upload Image" id="image" type="file" tabindex="3" onchange="loadImageFile();" >
+        <button name="submit" type="submit" id="contact-submit">Submit</button>
+    </form>
+    <a href="statistics.html" >Users Page</a>
+    <p>Origal Img - <img id="original-Img"/></p>
+    <p>Compress Img - <img id="upload-Preview"/></p>
+<script type="text/javascript" src="post.js"></script>
+<script type="text/javascript" src="scriptImg.js"></script>
+
+</body>
+</html>
