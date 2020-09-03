@@ -1,5 +1,3 @@
-console.log('function starts');
-
 const AWS = require('aws-sdk');
 const db = new AWS.DynamoDB.DocumentClient({region: 'eu-central-1'});
 
@@ -57,3 +55,29 @@ exports.postImg = function (event, context, callback) {
         }
     });
 };
+
+exports.loadToS3 = function (event, context, callback){
+    let encodedImage =JSON.parse(event.body).image;
+    let decodedImage = Buffer.from(encodedImage, 'base64');
+    var filePath = "avatars/" + event.queryStringParameters.username + ".jpg"
+    var params = {
+        "Body": decodedImage,
+        "Bucket": "find-my-mate-hasangi",
+        "Key": filePath
+    };
+    s3.upload(params, function(err, data){
+        if(err) {
+            callback(err, null);
+        } else {
+            let response = {
+                "statusCode": 200,
+                "headers": {
+                    "my_header": "my_value"
+                },
+                "body": JSON.stringify(data),
+                "isBase64Encoded": false
+            };
+            callback(null, response);
+        }
+    });
+}

@@ -4,5 +4,5 @@
 4. Change request URL in index.html and statistics.html to ApiUrl from outputs
 5. Copy static files to host bucket (scriptImg.js, statistics.html, index.html)
 
-<p>Demo page - http://d335dazbbhohn7.cloudfront.net </p>
+<p>Demo page - http://d3madsecx34dvb.cloudfront.net/ </p>
 <p>Report - https://docs.google.com/document/d/12J3yfSEneSeZ1AuFr54Z2CKzuCqExdagdI-3xdSe3nw/edit</p>

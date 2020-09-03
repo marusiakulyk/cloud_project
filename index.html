@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
 </head>
-<body onload="loadImageFile();">
-    <form id="contact" name="contact">
-            <input placeholder="Your Email Address" id="email" type="email" tabindex="2" required>
-            <input placeholder="Width" type="text" id="width" tabindex="1" required autofocus>
-            <input placeholder="Height" type="text" id="height" tabindex="1" required autofocus>
-            <input placeholder="Upload Image" id="image" type="file" tabindex="3" onchange="loadImageFile();" >
+<body>
+    <form id="image-data" name="image-data" method="post" enctype="multipart/form-data">
+            <input placeholder="Your Email Address" id="email" type="email" required>
+            <input placeholder="Width" type="text" id="width" required autofocus>
+            <input placeholder="Height" type="text" id="height"  required autofocus>
+            <input placeholder="Upload Image" id="image" type="file" >
         <button name="submit" type="submit" id="contact-submit">Submit</button>
     </form>
     <a href="statistics.html" >Users Page</a>
     <p>Origal Img - <img id="original-Img"/></p>
     <p>Compress Img - <img id="upload-Preview"/></p>
 <script type="text/javascript">
-    document.getElementById("contact").addEventListener("submit", function (e) {
+    document.getElementById("image-data").addEventListener("submit", function (e) {
             e.preventDefault();
             let request = new XMLHttpRequest();
 
@@ -24,24 +24,43 @@
                 }
             };
 
-            request.open('POST', 'https://8hc3y6szt7.execute-api.eu-central-1.amazonaws.com/v1/postImg');
+            request.open('POST', 'https://khwgmre21h.execute-api.eu-central-1.amazonaws.com/v1/postImg');
             request.setRequestHeader("Access-Control-Allow-Origin", "*");
+
 
             const json = JSON.stringify({
                 email: document.getElementById("email").value,
                 width: document.getElementById("width").value,
-                height: document.getElementById("height").value
+                height: document.getElementById("height").value,
             });
 
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             request.send(json);
 
-            document.getElementById("contact").reset();
+            // let requestS3 = new XMLHttpRequest();
+            // requestS3.onload = () => {
+            //     if (requestS3.status >= 200 && requestS3.status < 300) {
+            //         alert("success1");
+            //     }
+            // };
+            //
+            // requestS3.open('POST', 'https://8hc3y6szt7.execute-api.eu-central-1.amazonaws.com/v1/loadToS3');
+            // requestS3.setRequestHeader("Access-Control-Allow-Origin", "*");
+            //
+            //
+            // const jsonS3 = JSON.stringify({
+            //     image: document.getElementById("image").value
+            // });
+            //
+            // requestS3.setRequestHeader('Content-type', 'image/png; charset=utf-8');
+            // requestS3.send(jsonS3);
+            //
+            document.getElementById("image-data").reset();
 
         }
     );
 </script>
-<script type="text/javascript" src="scriptImg.js"></script>
+<!--<script type="text/javascript" src="scriptImg.js"></script>-->
 
 </body>
 </html>

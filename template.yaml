@@ -6,15 +6,11 @@ Parameters:
     Default: "mariiakulyk-image-scale"
 
 Globals:
-  Function:
-    Runtime: nodejs12.x
-    Timeout: 180
   Api:
     Cors:
       AllowMethods: "'GET,POST,OPTIONS'"
       AllowHeaders: "'*'"
       AllowOrigin: "'*'"
-
 
 Resources:
   DynamoImagesTable:
@@ -30,6 +26,8 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: GetImgFunction
+      Runtime: nodejs12.x
+      Timeout: 180
       CodeUri: .
       Handler:  index.getImg
       Policies: AmazonDynamoDBFullAccess
@@ -45,6 +43,8 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: PostImgFunction
+      Runtime: nodejs12.x
+      Timeout: 180
       CodeUri: .
       Handler: index.postImg
       Policies: AmazonDynamoDBFullAccess
@@ -55,6 +55,23 @@ Resources:
             Path: /postImg
             Method: post
             RestApiId: !Ref ApiGateway
+
+#  PostFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      FunctionName: PostFunction
+#      Runtime: nodejs12.x
+#      Timeout: 180
+#      CodeUri: .
+#      Handler: index.loadToS3
+#      Policies: AmazonDynamoDBFullAccess
+#      Events:
+#        MyApi:
+#          Type: Api
+#          Properties:
+#            Path: /loadToS3
+#            Method: post
+#            RestApiId: !Ref ApiGateway
 
   ApiGateway:
     Type: AWS::Serverless::Api

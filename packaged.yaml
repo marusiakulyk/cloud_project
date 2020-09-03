@@ -5,9 +5,6 @@ Parameters:
     Type: String
     Default: mariiakulyk-image-scale
 Globals:
-  Function:
-    Runtime: nodejs12.x
-    Timeout: 180
   Api:
     Cors:
       AllowMethods: '''GET,POST,OPTIONS'''
@@ -25,7 +22,9 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: GetImgFunction
-      CodeUri: s3://mariiakulyk-artefacts/d3a7fe281409a5badd19c4321443a52c
+      Runtime: nodejs12.x
+      Timeout: 180
+      CodeUri: s3://mariiakulyk-artefacts/d650fe909e2bcd887eafc2174d35aa4f
       Handler: index.getImg
       Policies: AmazonDynamoDBFullAccess
       Events:
@@ -40,7 +39,9 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: PostImgFunction
-      CodeUri: s3://mariiakulyk-artefacts/d3a7fe281409a5badd19c4321443a52c
+      Runtime: nodejs12.x
+      Timeout: 180
+      CodeUri: s3://mariiakulyk-artefacts/d650fe909e2bcd887eafc2174d35aa4f
       Handler: index.postImg
       Policies: AmazonDynamoDBFullAccess
       Events:
